@@ -20,6 +20,7 @@ App.use(Express.json());
 App.use(cors());
 App.use(router);
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(DB)
   .then(() => {
@@ -30,5 +31,3 @@ mongoose
   .catch((e) => {
     console.log(e.message);
   });
-
-
