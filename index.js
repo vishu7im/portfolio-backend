@@ -19,6 +19,9 @@ App.use(
 App.use(Express.json());
 App.use(cors());
 App.use(router);
+App.get("/", (req, res) => {
+  res.send("server vishal");
+});
 
 mongoose.set("strictQuery", false);
 mongoose
