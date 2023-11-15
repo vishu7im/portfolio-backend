@@ -9,6 +9,7 @@ import {
 import jwt from "jsonwebtoken";
 
 import pwdhash from "password-hash";
+
 //project set
 export const setproject = async (req, res) => {
   const { name, skill, git, demo, img } = req.body;
@@ -178,11 +179,23 @@ export const putskills = async (req, res) => {
 //profile set
 
 export const setprofile = async (req, res) => {
-  const { cv, img, id } = req.body;
+  const { img, id } = req.body;
+  try {
+    const data = await Profile.findByIdAndUpdate(id, {
+      img,
+    });
+    res.status(202);
+  } catch (error) {
+    res.status(401);
+    console.log(error.message);
+  }
+};
+
+export const profileCv = async (req, res) => {
+  const { cv, id } = req.body;
   try {
     const data = await Profile.findByIdAndUpdate(id, {
       cv,
-      img,
     });
     res.status(202);
   } catch (error) {

@@ -15,6 +15,7 @@ import {
   deleteskills,
   setprofile,
   getprofile,
+  profileCv,
   login,
   change,
 } from "../controllers/controller.js";
@@ -38,6 +39,7 @@ router.post("/skill", putskills);
 router.delete("/skills/:id", deleteskills);
 
 router.post("/profile", setprofile);
+router.post("/profileCv", profileCv);
 router.get("/profile", getprofile);
 
 //login route
